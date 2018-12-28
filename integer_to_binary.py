@@ -1,5 +1,5 @@
-
-
+import sys
+f=open('binary.txt','w')
 
 def int_to_bin(integer):
     bin=str()
@@ -21,18 +21,24 @@ def int_to_bin(integer):
 
     return bin
 
+while True:
+    try:
 
-integer = int(input("enter a number"))
+        integer = int(float(input("enter a number")))
 
+        z=int_to_bin(integer)
+        print(z)
 
-z=int_to_bin(integer)
-print(z)
-try:
-  f=open('binary.txt','w')            # simply opening file and writing binary vales into it
-  f.write(z)
-except IOError("problem in opening file") as e:
-    print(e)
-finally:
-    f.close()
+        f.write(z)
+
+    except ValueError:
+        print('program terminatded because of wrong input')
+    except Exception:
+        print(sys.exc_info()[0])
+    except IOError("problem in opening file") as e:
+        print(e)
+
+    #finally:
+    #   f.close()
 
 
